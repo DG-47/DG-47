@@ -1,0 +1,14 @@
+// Assume you have already deployed the SimulatedStaking contract
+SimulatedStaking stakingContract = SimulatedStaking(contractAddress); // Replace contractAddress with the deployed contract address
+
+// Step 1: Stake 0.5 ETH
+stakingContract.stake{value: 0.5 ether}();
+
+// Step 2: Wait for a Day (simulate)
+
+// Step 3: Check Rewards
+uint balanceAfterOneDay = stakingContract.getBalance();
+
+// Step 4: Withdraw and Reinvest
+stakingContract.withdraw(balanceAfterOneDay); // Withdraw all balance including rewards
+stakingContract.stake{value: balanceAfterOneDay}(); // Reinvest the withdrawn amount
